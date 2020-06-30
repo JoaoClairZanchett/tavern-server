@@ -42,13 +42,13 @@ class UsersController {
     show = async (request: Request, response: Response) => {
         const { id } = request.params;
 
-        const point = await knex('users').where('id', id).first();
+        const user = await knex('users').where('id', id).first();
 
-        if(!point) {
+        if(!user) {
             return response.status(404).json({ message: 'User not found'});
         }   
 
-        return response.json({point});
+        return response.json({user});
     }
 
     search = async (request: Request, response: Response) => {
